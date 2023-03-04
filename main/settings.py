@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'client.apps.ClientConfig',
+    'django_nose'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,12 @@ DATABASES = {
     }
 }
 
-
+TEST_RUNNER = "django_nose.NoseTestSuiteRunner"
+NOSE_ARGS = [
+    "--cover-erase",
+    "--with-xunit",
+    "--xunit-file=result.xml"
+]
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
