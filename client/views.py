@@ -9,10 +9,7 @@ def Review(request, post_id=None):
         formdata = request.POST
         post = Post.objects.get(id=post_id)
         isLiked = int(formdata.get('isLiked'))
-        if (isLiked):
-            post.likecount += 1
-        else:
-            post.dislikecount += 1
+        # enter your code here
         post.save()
         return JsonResponse({"likecount":post.likecount,"dislikecount":post.dislikecount},safe=False)
     return JsonResponse({"message":"invalid request"})
